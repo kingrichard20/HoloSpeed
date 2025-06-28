@@ -1,0 +1,47 @@
+:root {
+  --text-color-pink: hsl(330, 100%, 50%);
+}
+
+:root {
+  --text-speedometer-size: 20rem;
+}
+
+.text-speedometer {
+  font-family: monospace;
+  font-size: var(--text-speedometer-size);
+  color: white;
+  user-select: none;
+  transform: rotateX(180deg);
+
+}
+
+.text-pink {
+  color: var(--text-color-pink);
+}
+
+@font-face {
+  font-family: "Digital-7";
+  src: url("../assets/fonts/digital-7.mono.ttf");
+}
+
+@font-face {
+  font-family: "TESLA";
+  src: url("../assets/fonts/TESLA.ttf");
+}
+
+@font-face {
+  font-family: "ToyotaType-Regular";
+  src: url("../assets/fonts/ToyotaType-Regular.woff2");
+}
+
+.text-digital {
+  font-family: "Digital-7", sans-serif;
+}
+
+.text-tsla {
+  font-family: "TESLA", sans-serif;
+}
+
+.text-tm {
+  font-family: "ToyotaType-Regular", sans-serif;
+}
