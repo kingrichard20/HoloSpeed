@@ -11,8 +11,8 @@
   font-size: var(--text-speedometer-size);
   color: white;
   user-select: none;
+  -webkit-user-select: none;
   transform: rotateX(180deg);
-
 }
 
 .text-pink {

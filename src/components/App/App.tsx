@@ -45,14 +45,14 @@ export function App() {
     );
 
     function toggleFullscreen(_e: MouseEvent) {
-      document.body.requestFullscreen();
+      document.documentElement.requestFullscreen();
     }
-    document.addEventListener("click", toggleFullscreen);
+    document.documentElement.addEventListener("click", toggleFullscreen);
 
     // 
     return () => {
       navigator.geolocation.clearWatch(geoWatch);
-      document.removeEventListener("click", toggleFullscreen);
+      document.documentElement.removeEventListener("click", toggleFullscreen);
     }
 
   }, []);
