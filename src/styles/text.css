@@ -1,5 +1,7 @@
 :root {
   --text-color-pink: hsl(330, 100%, 50%);
+  --text-color-yellow: hsl(61, 99%, 50%);
+  --text-color-red: #FF3B30;
 }
 
 :root {
@@ -17,6 +19,13 @@
 
 .text-pink {
   color: var(--text-color-pink);
+}
+
+.text-yellow {
+  color: var(--text-color-yellow);
+}
+.text-red {
+  color: var(--text-color-red);
 }
 
 @font-face {

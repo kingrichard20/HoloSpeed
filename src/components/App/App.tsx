@@ -58,6 +58,6 @@ export function App() {
   }, []);
 
   return (<div className="app-body">
-    <span className="text-speedometer text-pink text-digital">{~~(state.speed)}</span>
+    <span className="text-speedometer text-red text-digital">{~~(state.speed)}</span>
   </div>)
 }
