@@ -1,0 +1,36 @@
+:root {
+  --intro-bg-color: hsl(217, 26%, 20%);
+}
+
+.intro-bg {
+  background-color: var(--intro-bg-color);
+  display: flex;
+  flex-direction: column;
+
+  width: 90vw;
+  height: 33vh;
+}
+
+.intro-color-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5cm;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25cm;
+}
+
+
+.intro-color-swatch,
+.intro-color-swatch-selected {
+  width: 1cm;
+  height: 1cm;
+  background-color: currentColor;
+  border-radius: 0.5cm;
+  cursor: pointer;
+}
+
+.intro-color-swatch-selected {
+  border-radius: 0.1cm;
+  cursor: default;
+}

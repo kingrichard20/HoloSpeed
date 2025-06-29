@@ -2,10 +2,12 @@
   --text-color-pink: hsl(330, 100%, 50%);
   --text-color-yellow: hsl(61, 99%, 50%);
   --text-color-red: #FF3B30;
+  --text-color-satred: #FF0000;
+
 }
 
 :root {
-  --text-speedometer-size: 20rem;
+  --text-speedometer-size: 15rem;
 }
 
 .text-speedometer {
@@ -26,6 +28,12 @@
 }
 .text-red {
   color: var(--text-color-red);
+}
+.text-satred {
+  color: var(--text-color-satred);
+}
+.text-white {
+  color: white;
 }
 
 @font-face {
