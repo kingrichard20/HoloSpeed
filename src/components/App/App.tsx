@@ -1,7 +1,7 @@
 import { MPS_TO_MPH } from "@/modules/math";
 import "./app.css"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 
 // May not need to use haversine on certain devices.
 type AppState = {
@@ -12,6 +12,7 @@ type AppState = {
 
 export function App() {
 
+  const wakeLockRef = useRef<WakeLockSentinel>(null);
   const [state, setState] = useState<AppState>({ speed: 0 });
 
 
@@ -20,13 +21,18 @@ export function App() {
 
     async function keepAwake() {
       try {
-        const wakeLock = await navigator.wakeLock.request("screen");
-        // wakeLock.release() May want to handle this at some point
+        wakeLockRef.current = await navigator.wakeLock.request("screen");
+
+        document.onvisibilitychange = async () => {
+          if (wakeLockRef.current !== null && document.visibilityState === 'visible') {
+            wakeLockRef.current = await navigator.wakeLock.request('screen');
+          }
+        };
       } catch (err) {
         alert("[x] WakeLock request failed")
       }
-
     }
+    keepAwake();
 
     // Setup pos watcher
     const geoWatch = navigator.geolocation.watchPosition(
@@ -54,15 +60,18 @@ export function App() {
       }
     );
 
-    function toggleFullscreen(_e: MouseEvent) {
-      document.documentElement.requestFullscreen();
-    }
-    document.documentElement.addEventListener("click", toggleFullscreen);
+    // function toggleFullscreen(_e: MouseEvent) {
+    //   document.documentElement.requestFullscreen();
+    // }
+    // document.documentElement.addEventListener("click", toggleFullscreen);
 
     // 
     return () => {
       navigator.geolocation.clearWatch(geoWatch);
-      document.documentElement.removeEventListener("click", toggleFullscreen);
+      // document.documentElement.removeEventListener("click", toggleFullscreen);
+      if (wakeLockRef.current !== null) {
+        wakeLockRef.current.release();
+      }
     }
 
   }, []);
