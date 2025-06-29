@@ -18,6 +18,16 @@ export function App() {
 
   useEffect(() => {
 
+    async function keepAwake() {
+      try {
+        const wakeLock = await navigator.wakeLock.request("screen");
+        // wakeLock.release() May want to handle this at some point
+      } catch (err) {
+        alert("[x] WakeLock request failed")
+      }
+
+    }
+
     // Setup pos watcher
     const geoWatch = navigator.geolocation.watchPosition(
       // 
@@ -34,7 +44,7 @@ export function App() {
       },
       //
       (err) => {
-        alert(`Error: ${err.message}`);
+        alert(`[x] Error: ${err.message}`);
       },
       // 
       {
